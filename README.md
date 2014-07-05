@@ -32,14 +32,13 @@ client = Client(access_key='your access key', secret_key='your secret key')
 url = get_api_path('members')
 
 
-#you can also give url a plain text, just like this:
+#or you can give url a plain text, just like this:
 url = "/api/v2/members/me.json"
 
 #send request
 res = client.get(url)
 
-#if your access key and secret are correct, res should be a json like this:
-
+#if your access key and secret are correct, res should be a dictionary like this:
 {
     u'email': u'zhaoyu.johnny@@gmail.com', 
     u'activated': True, 
@@ -72,8 +71,7 @@ res = client.get(url)
 markets =  client.get(get_api_path('markets'))
 print markets
 
-#markets should be a json like this
-
+#markets should be a list like this
 [
     {u'id': u'btccny', u'name': u'BTC/CNY'}, 
     {u'id': u'ptscny', u'name': u'PTS/CNY'}, 
@@ -88,12 +86,10 @@ print markets
 ```python
 
 #get your orders in a specific market
-
-orders = client.get(get_api_path('orders'), {'market': market['id']})
+orders = client.get(get_api_path('orders'), {'market': 'btccny'})
 print orders
 
-#orders will be an empty list or json like this
-
+#orders will be an empty list or list like this
 [
     {u'created_at': u'2014-07-05T14:56:25+08:00', 
      u'remaining_volume': u'11.0', 
