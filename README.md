@@ -1,7 +1,7 @@
 peatio-client-python
 ====================
 
-peatio client written in python
+A simple python client for Crypto Trade Site [Peatio.com](http://peatio.com)
 
 ## Usage ##
 
