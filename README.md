@@ -12,8 +12,26 @@ from lib.client import Client, get_api_path
 
 client = Client(access_key='your access key', secret_key='your secret key')
 
-#get members API url using get_api_path
+#get members API url using get_api_path by key 'members'
+#API mapping of get_api_path
+{
+    'my_trades'   : '/api/v2/trades/my.json'
+    'members'     : '/api/v2/members/me.json'
+    'orders'      : '/api/v2/orders.json'
+    'delete_order': '/api/v2/order/delete.json'
+    'order_book'  : '/api/v2/order_book.json'
+    'clear'       : '/api/v2/orders/clear.json'
+    'trades'      : '/api/v2/trades.json'
+    'order'       : '/api/v2/order.json'
+    'multi_orders': '/api/v2/orders/multi.json'
+    'tickers'     : '/api/v2/tickers/{market}.json'
+    'markets'     : '/api/v2/markets.json'
+    'k'           : '/api/v2/k.json'
+}
+
 url = get_api_path('members')
+
+
 #you can also give url a plain text, just like this:
 url = "/api/v2/members/me.json"
 
