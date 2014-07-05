@@ -14,7 +14,10 @@ class Auth():
         query = ''
         for key in keys:
             value = params[key]
-            if key == "orders":
+            if key != "orders":
+                query = "%s&%s=%s" % (query, key, value) if len(query) else "%s=%s" % (key, value)
+            else:
+                #this ugly code is for multi orders API, there should be an elegant way to do this
                 d = {key: params[key]}
                 for v in value:
                     ks = v.keys()
@@ -22,8 +25,6 @@ class Auth():
                     for k in ks:
                         item = "orders[][%s]=%s" % (k, v[k])
                         query = "%s&%s" % (query, item) if len(query) else "%s" % item
-            else:
-                query = "%s&%s=%s" % (query, key, value) if len(query) else "%s=%s" % (key, value)
         return query
 
     def sign(self, verb, path, params=None):
